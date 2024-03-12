@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+  
+{% block title %}Adicionar registro{% endblock title %}
+  
+{% block content %}
+ <div class="col-md-12">
+        <span><a href="/addnew" class="btn btn-primary">+ Adicionar estudante</a></span>  
+        <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <th><input type="checkbox" id="checkall" /></th>
+            <th>ID</th>
+            <th> Nome</th>
+            <th>Email</th>
+            <th>Contacto</th>
+            <th>Editar</th>
+            <th>Apagar</th>
+        </thead>
+        <tbody>
+        {% for employee in employees %}  
+            <tr>  
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>{{ employee.id }}</td>  
+            <td>{{ employee.name }}</td>  
+            <td>{{ employee.email }}</td>  
+            <td>{{ employee.contact }}</td>  
+            <td><a href="/edit/{{ employee.id }}" class="btn btn-primary">Editar</a></td>
+            <td><a href="/delete/{{ employee.id }}" class="btn btn-danger">Apagar</a></td>  
+            </tr>  
+        {% endfor %} 
+        </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock content %}
